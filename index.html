@@ -133,21 +133,21 @@
                 </div>
 
                 <div class="troubleshoot-grid">
-                    <div class="ts-card" style="border-color: #ffcc00; background: rgba(255, 204, 0, 0.05);">
+                    <div class="ts-card ts-warning">
                         <h3>⚠️ Alerta: Unsafe-Inline</h3>
                         <p>Nunca use <code>'unsafe-inline'</code>. Mova seus scripts para arquivos <code>.js</code> separados. Isso é o que garante o A+.</p>
-                        <div class="code-comparison" style="margin-top: 1rem;">
+                        <div class="code-comparison mt-1">
                             <div class="comp-box">
-                                <span style="color: #ff4d4d;">❌ Inseguro</span>
+                                <span class="text-danger">❌ Inseguro</span>
                                 <code>onclick="acao()"</code>
                             </div>
                             <div class="comp-box">
-                                <span style="color: #00f2ff;">✅ Seguro</span>
+                                <span class="text-success">✅ Seguro</span>
                                 <code>addEventListener</code>
                             </div>
                         </div>
                     </div>
-                    <div class="ts-card" style="border-color: var(--accent-primary); background: rgba(var(--accent-primary-rgb), 0.05);">
+                    <div class="ts-card ts-accent">
                         <h3>✅ Dica: Use sempre SET</h3>
                         <p>O comando <strong>Set Static</strong> garante que sua regra nova apague qualquer configuração velha ou errada.</p>
                     </div>
@@ -172,7 +172,7 @@
                     </div>
                 </div>
 
-                <div class="tip-box" style="border-color: #ffcc00; background: rgba(255, 204, 0, 0.05); margin-top: 2rem;">
+                <div class="tip-box tip-warning mt-2">
                     <strong>Dica do Histórico:</strong> Mesmo que o site diga "Just Now", ele pode estar te mostrando cache de meses atrás. Confira sempre o <em>Last Scan</em> no histórico!
                 </div>
             </section>

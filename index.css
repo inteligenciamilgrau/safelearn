@@ -349,6 +349,28 @@ header h1 {
     font-weight: 800;
 }
 
+/* Utility Classes for CSP Compliance */
+.ts-warning {
+    border-color: #ffcc00 !important;
+    background: rgba(255, 204, 0, 0.05) !important;
+}
+
+.ts-accent {
+    border-color: var(--accent-primary) !important;
+    background: rgba(var(--accent-primary-rgb), 0.05) !important;
+}
+
+.tip-warning {
+    border-color: #ffcc00 !important;
+    background: rgba(255, 204, 0, 0.05) !important;
+}
+
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+
+.text-danger { color: #ff4d4d; font-weight: 800; }
+.text-success { color: var(--accent-primary); font-weight: 800; }
+
 /* Footer */
 footer {
     padding: 100px 0;
