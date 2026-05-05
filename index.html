@@ -302,6 +302,22 @@ Permissions-Policy: camera=(), microphone=()
                     <br><br>
                     <strong>E o www?</strong> Se quiser proteger o <code>www</code>, use o operador <strong>"contains"</strong> em vez de "equals", ou adicione uma regra extra com o botão <strong>"OR"</strong>.
                 </div>
+            <!-- Step 7 -->
+            <div class="step-container" id="step-7">
+                <div class="step-number">07</div>
+                <h2>Dica Ninja: Teste via Terminal 🥷</h2>
+                <p>Não quer esperar o Mozilla? Teste seus headers agora mesmo usando o terminal do seu PC.</p>
+                
+                <div class="code-box" style="border-color: var(--accent-secondary);">
+                    <div class="code-header">
+                        <span>POWERSHELL / TERMINAL</span>
+                    </div>
+                    <pre>curl -I https://seusite.com</pre>
+                </div>
+
+                <p style="margin-top: 1.5rem; font-size: 0.9rem;">
+                    O comando <code>-I</code> mostra apenas o "envelope" do site. Se você vir suas regras na lista que aparecer, significa que <strong>está funcionando!</strong>
+                </p>
             </div>
         </div>
 
