@@ -181,55 +181,41 @@ Permissions-Policy: camera=(), microphone=()
             <!-- Step 5 -->
             <div class="step-container" id="step-5">
                 <div class="step-number">05</div>
-                <h2>Tradução para Humanos (CSP) 🧑‍🏫</h2>
-                <p>O CSP é o "Porteiro" do seu site. Veja como dar ordens para ele de um jeito simples:</p>
+                <h2>O que cada termo significa? (Dicionário Real) 📖</h2>
+                <p>O CSP usa termos técnicos que parecem grego. Vamos traduzir para a língua da gente:</p>
                 
-                <div class="csp-table-container">
-                    <table class="csp-table">
-                        <thead>
-                            <tr>
-                                <th>O que vigiar?</th>
-                                <th>O que significa?</th>
-                                <th>Quem pode entrar? (Exemplos)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>A Regra Geral</strong><br><code>default-src</code></td>
-                                <td class="muted">Vale para tudo que você não explicou abaixo.</td>
-                                <td><code>'self'</code><br><small>(Apenas meu próprio site)</small></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Scripts (Ajudantes)</strong><br><code>script-src</code></td>
-                                <td class="muted">Arquivos que fazem o site "funcionar" (JS).</td>
-                                <td><code>https://google.com</code><br><small>(Só o Google tá liberado)</small></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Estilos (Roupas)</strong><br><code>style-src</code></td>
-                                <td class="muted">Cores e fontes que deixam o site bonito (CSS).</td>
-                                <td><code>'unsafe-inline'</code><br><small>(Código escrito direto no HTML)</small></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Imagens</strong><br><code>img-src</code></td>
-                                <td class="muted">Fotos, logos e ícones.</td>
-                                <td><code>'self' data:</code><br><small>(Minhas fotos e ícones simples)</small></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Porta-Retrato</strong><br><code>frame-src</code></td>
-                                <td class="muted">Outros sites aparecendo dentro do seu.</td>
-                                <td><code>https://youtube.com</code><br><small>(Apenas vídeos do YouTube)</small></td>
-                            </tr>
-                            <tr>
-                                <td><strong>Quem me emoldura?</strong><br><code>frame-ancestors</code></td>
-                                <td class="muted">Bloqueia outros sites de "sequestrarem" o seu site em iframes.</td>
-                                <td><code>'none'</code><br><small>(Ninguém pode me emoldurar)</small></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="csp-explanation-grid">
+                    <div class="csp-item-box">
+                        <h3>O segredo do "-src"</h3>
+                        <p>Quase todos os termos terminam em <strong>-src</strong>. Isso é abreviação de <strong>Source</strong> (Fonte/Origem). Ele define de ONDE o navegador pode baixar as coisas.</p>
+                    </div>
+
+                    <div class="csp-detail-list">
+                        <div class="detail-row">
+                            <strong>script-src</strong>
+                            <span>Controla a fonte dos arquivos <strong>JavaScript</strong> (os "ajudantes" que fazem o site funcionar). Evita que hackers injetem scripts que roubam senhas.</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>style-src</strong>
+                            <span>Controla a fonte dos <strong>CSS</strong> (as "roupas" do site). Evita que alguém mude o visual do seu site para te enganar.</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>img-src</strong>
+                            <span>Controla de onde vêm as <strong>Imagens</strong>. Evita o carregamento de fotos de servidores maliciosos.</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>default-src</strong>
+                            <span>É a <strong>Regra Geral</strong>. Se você não deu uma ordem específica para um tipo de arquivo, o navegador usa essa regra aqui como segurança.</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>frame-ancestors</strong>
+                            <span>Controla quem pode ser o "pai" do seu site em um quadro. Evita que o seu site seja "sequestrado" dentro de outro site falso.</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="tip-box">
-                    <strong>💡 Dica do Porteiro:</strong> Sempre que ler <code>'self'</code>, pense em <strong>"Eu Mesmo"</strong>. É o seu site dizendo: "Eu confio em mim, mas não confio em estranhos!".
+                    <strong>💡 Por que usar isso?</strong> Para evitar o <strong>Roubo de Dados</strong>. Quando você diz <code>script-src 'self'</code>, o navegador só aceita scripts que moram no seu próprio site. Se um hacker tentar injetar um script de fora, o navegador bloqueia na hora!
                     <br><br>
                     <strong>🔗 Como combinar tudo?</strong> Use o ponto e vírgula <code>;</code> para separar as ordens. Exemplo: <code>default-src 'self'; frame-ancestors 'none';</code>
                 </div>
