@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mozilla Observatory: O Guia Interativo A+</title>
-    <meta name="description" content="Guia definitivo para configurar segurança web e passar no Mozilla Observatory.">
+    <title>SafeLearn: A Fortaleza Digital (Guia A+)</title>
+    <meta name="description" content="Masterclass definitiva para configurar segurança web e alcançar o A+ no Mozilla Observatory.">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,448 +16,193 @@
     <div class="progress-bar" id="page-progress"></div>
 
     <div class="container">
-        <nav>
-            <div class="logo"><span class="gradient-text">SAFE</span>LEARN</div>
-            <div class="score-badge">SCORE: <span id="security-score">0</span>%</div>
-        </nav>
-
-        <section class="hero">
-            <span class="badge">Missão: Segurança Total</span>
-            <h1>Seu site está <span class="gradient-text">vulnerável</span>?</h1>
-            <p>Não entre em pânico. Este guia interativo vai te ensinar a proteger seu site contra "ladrões digitais" e alcançar o A+ no Mozilla Observatory.</p>
-            
-            <button class="cta-btn" id="start-guide">Entender o Perigo ↓</button>
-
-            <div class="hero-image-container">
-                <img src="hero.png" alt="Segurança" class="hero-img">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">🛡️</span>
+                <h1>SafeLearn</h1>
             </div>
-        </section>
+            <p class="subtitle">A Masterclass definitiva para o A+ no Mozilla Observatory</p>
+            <div class="header-meta">
+                <span>Versão 2.0: Elite Edition</span>
+                <span>Foco: Hardening & Cloudflare</span>
+            </div>
+            <button class="btn-primary" id="start-guide">Iniciar Jornada da Fortaleza ↓</button>
+        </header>
 
-        <div class="guide-steps">
-            <!-- Step 0 -->
-            <div class="step-container" id="step-0">
-                <div class="step-number">00</div>
-                <h2>Por que estamos aqui? 🕵️‍♂️</h2>
-                <p>Antes de apertar botões, entenda quem são os "vilões" que o Mozilla Observatory quer que você vença:</p>
+        <main>
+            <!-- FASE 0: O CENÁRIO -->
+            <section class="phase-section" id="intro">
+                <div class="phase-badge">Fase 00: O Cenário</div>
+                <h2>🛡️ Sua Fortaleza Digital</h2>
+                <p>Um site não é apenas código; é um território. Sem os <strong>Headers de Segurança</strong>, seu site é um castelo de portas abertas no meio de uma floresta de perigos.</p>
                 
-                <div class="villain-grid">
+                <div class="villains-grid">
                     <div class="villain-card">
-                        <div class="v-icon">👺</div>
+                        <div class="v-icon">👤</div>
                         <h3>O Infiltrado (XSS)</h3>
-                        <p>Ele tenta colocar um código "espião" dentro do seu site para roubar senhas dos seus usuários.</p>
-                        <span class="v-defense">Defesa: CSP</span>
+                        <p>O vilão que tenta "ouvir" o que o usuário digita (senhas, cartões) injetando um script espião.</p>
+                        <span class="v-defense">Muro: CSP</span>
                     </div>
                     <div class="villain-card">
-                        <div class="v-icon">🕸️</div>
-                        <h3>A Fachada Falsa</h3>
-                        <p>O hacker "embrulha" seu site dentro de outro para enganar as pessoas e fazê-las clicar onde não deviam.</p>
-                        <span class="v-defense">Defesa: X-Frame-Options</span>
+                        <div class="v-icon">🖼️</div>
+                        <h3>O Sequestrador</h3>
+                        <p>Aquele que coloca o seu site dentro de um quadro invisível para roubar cliques (Clickjacking).</p>
+                        <span class="v-defense">Muro: X-Frame</span>
                     </div>
                     <div class="villain-card">
-                        <div class="v-icon">👂</div>
-                        <h3>O Fofoqueiro</h3>
-                        <p>Ele fica "ouvindo" a conversa entre o usuário e o seu site. Se não estiver blindado, ele rouba tudo.</p>
-                        <span class="v-defense">Defesa: HSTS</span>
+                        <div class="v-icon">🕵️</div>
+                        <h3>O Xereta (MIME)</h3>
+                        <p>O vilão que tenta convencer o navegador a ler um arquivo de imagem como se fosse um vírus.</p>
+                        <span class="v-defense">Muro: nosniff</span>
                     </div>
                 </div>
-                
-                <div class="tip-box" style="background: rgba(0, 242, 255, 0.05); border-color: var(--accent-primary);">
-                    <strong>Moral da história:</strong> O Mozilla Observatory é o seu <strong>Auditório de Segurança</strong>. Ele testa se você instalou as trancas certas para expulsar esses vilões.
-                </div>
-            </div>
+            </section>
 
-            <!-- Step 1 -->
-            <div class="step-container" id="step-1">
-                <div class="step-number">01</div>
-                <h2>Conheça seus Defensores</h2>
-                <p>Clique nos cards abaixo para entender o que cada header faz.</p>
-                
-                <div class="security-grid">
-                    <div class="card" data-header="CSP">
-                        <div class="card-icon">🛡️</div>
-                        <h3>CSP</h3>
-                        <p>O mestre do controle. Define o que pode rodar no seu site.</p>
-                        <div class="card-detail">Previne ataques de Cross-Site Scripting (XSS).</div>
-                    </div>
-                    <div class="card" data-header="HSTS">
-                        <div class="card-icon">🔒</div>
-                        <h3>HSTS</h3>
-                        <p>Força a conexão segura via HTTPS sempre.</p>
-                        <div class="card-detail">Impede ataques de interceptação (MITM).</div>
-                    </div>
-                    <div class="card" data-header="XFO">
-                        <div class="card-icon">🖼️</div>
-                        <h3>X-Frame</h3>
-                        <p>Bloqueia seu site em iframes maliciosos.</p>
-                        <div class="card-detail">Protege contra Clickjacking.</div>
-                    </div>
-                </div>
-            </div>
+            <!-- FASE 1: OS PORTEIROS -->
+            <section class="phase-section" id="fase-1">
+                <div class="phase-badge">Fase 01: Os Porteiros</div>
+                <h2>💂‍♂️ Quem protege seu castelo?</h2>
+                <p>Headers são instruções enviadas pelo servidor que dizem ao navegador como ele deve se comportar ANTES de abrir o site.</p>
 
-            <!-- Step 2 -->
-            <div class="step-container" id="step-2">
-                <div class="step-number">02</div>
-                <h2>Mão na Massa</h2>
-                <p>Marque as tarefas abaixo para aumentar seu score de segurança.</p>
-                
-                <div class="checklist">
-                    <div class="checklist-item" data-points="35">
-                        <div class="checkbox"></div>
-                        <div class="item-content">
-                            <strong>Configurar CSP Restrito</strong>
-                            <span>Bloqueie tudo com default-src 'self'</span>
-                        </div>
-                    </div>
-                    <div class="checklist-item" data-points="25">
-                        <div class="checkbox"></div>
-                        <div class="item-content">
-                            <strong>Ativar HSTS Preload</strong>
-                            <span>Diga ao mundo que seu site é 100% HTTPS</span>
-                        </div>
-                    </div>
-                    <div class="checklist-item" data-points="20">
-                        <div class="checkbox"></div>
-                        <div class="item-content">
-                            <strong>Remover Powered-By</strong>
-                            <span>Não revele sua tecnologia a atacantes</span>
-                        </div>
-                    </div>
-                    <div class="checklist-item" data-points="20">
-                        <div class="checkbox"></div>
-                        <div class="item-content">
-                            <strong>Bloquear Geolocalização</strong>
-                            <span>Desative permissões de hardware desnecessárias</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="step-container" id="step-3">
-                <div class="step-number">03</div>
-                <h2>O Código Mestre</h2>
-                <p>Copie esta configuração e aplique no seu servidor (Cloudflare, Nginx, Apache).</p>
-                
-                <div class="code-box">
-                    <div class="code-header">
-                        <span>SECURITY HEADERS CONFIG</span>
-                        <button class="copy-btn">Copiar Código</button>
-                    </div>
-                    <pre id="code-content">
-<span style="color: #ff00ff; font-weight: 800; text-shadow: 0 0 10px rgba(255,0,255,0.5);">Content-Security-Policy: default-src 'self';</span>
-Strict-Transport-Security: max-age=63072000; preload
-X-Frame-Options: DENY
-<span style="color: var(--accent-primary); font-weight: 800;">X-Content-Type-Options: nosniff</span>
-Referrer-Policy: strict-origin-when-cross-origin
-Permissions-Policy: camera=(), microphone=()
-                    </pre>
-                </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="step-container" id="step-4">
-                <div class="step-number">04</div>
-                <h2>Onde eu colo isso? 📍</h2>
-                <p>Estes headers não vão no HTML. Eles vão na configuração do seu Host.</p>
-                
-                <div class="platform-grid">
-                    <div class="platform-card">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Cloudflare_Logo.png" alt="Cloudflare" height="30">
-                        <h3>Cloudflare</h3>
-                        <p>Vá em <strong>Rules > Transform Rules</strong> e crie uma regra de "Modify Response Header".</p>
-                    </div>
-                    <div class="platform-card">
-                        <img src="https://assets.vercel.com/image/upload/v1588805177/repositories/vercel/logo.png" alt="Vercel" height="30">
-                        <h3>Vercel</h3>
-                        <p>Crie um arquivo <code>vercel.json</code> na raiz do projeto com a chave "headers".</p>
-                    </div>
-                    <div class="platform-card">
-                        <h3>Apache (.htaccess)</h3>
-                        <p>Adicione: <code>Header set X-Frame-Options "DENY"</code> no seu arquivo .htaccess.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 5 -->
-            <div class="step-container" id="step-5">
-                <div class="step-number">05</div>
-                <h2>O que cada termo significa? (Dicionário Real) 📖</h2>
-                <p>O CSP usa termos técnicos que parecem grego. Vamos traduzir para a língua da gente:</p>
-                
                 <div class="csp-explanation-grid">
                     <div class="csp-item-box">
-                        <h3>O segredo do "-src"</h3>
-                        <p>Quase todos os termos terminam em <strong>-src</strong>. Isso é abreviação de <strong>Source</strong> (Fonte/Origem). Ele define de ONDE o navegador pode baixar as coisas.</p>
+                        <h3>O General: CSP</h3>
+                        <p>O <strong>Content Security Policy</strong> decide quais scripts, imagens e estilos podem carregar.</p>
+                        <ul class="mini-list">
+                            <li><code>'self'</code>: "Só confio em mim".</li>
+                            <li><code>-src</code>: Significa <strong>Fonte</strong> (Source).</li>
+                        </ul>
                     </div>
 
                     <div class="csp-detail-list">
                         <div class="detail-row">
                             <strong>script-src</strong>
-                            <span>Controla a fonte dos arquivos <strong>JavaScript</strong> (os "ajudantes" que fazem o site funcionar). Evita que hackers injetem scripts que roubam senhas.</span>
+                            <span>Controla os arquivos JS. Evita que hackers injetem scripts que roubam senhas.</span>
                         </div>
                         <div class="detail-row">
                             <strong>style-src</strong>
-                            <span>Controla a fonte dos <strong>CSS</strong> (as "roupas" do site). Evita que alguém mude o visual do seu site para te enganar.</span>
+                            <span>Controla o visual (CSS). Impede que alguém mude o layout para te enganar.</span>
                         </div>
                         <div class="detail-row">
                             <strong>img-src</strong>
-                            <span>Controla de onde vêm as <strong>Imagens</strong>. Evita o carregamento de fotos de servidores maliciosos.</span>
-                        </div>
-                        <div class="detail-row">
-                            <strong>default-src</strong>
-                            <span>É a <strong>Regra Geral</strong>. Se você não deu uma ordem específica para um tipo de arquivo, o navegador usa essa regra aqui como segurança.</span>
-                        </div>
-                        <div class="detail-row">
-                            <strong>frame-ancestors</strong>
-                            <span>Controla quem pode ser o "pai" do seu site em um quadro. Evita que o seu site seja "sequestrado" dentro de outro site falso.</span>
+                            <span>Controla as imagens. Evita fotos de servidores maliciosos e pixels espiões.</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="tip-box">
-                    <strong>💡 Por que usar isso?</strong> Para evitar o <strong>Roubo de Dados</strong>. Quando você diz <code>script-src 'self'</code>, o navegador só aceita scripts que moram no seu próprio site. Se um hacker tentar injetar um script de fora, o navegador bloqueia na hora!
-                    <br><br>
-                    <strong>🔗 Como combinar tudo?</strong> Use o ponto e vírgula <code>;</code> para separar as ordens. Exemplo: <code>default-src 'self'; frame-ancestors 'none';</code>
-                </div>
-
-                <!-- Anatomia do Ataque -->
                 <div class="attack-anatomy">
-                    <h3>🕵️‍♂️ Anatomia de um Ataque (Na Prática)</h3>
-                    <p>Você deve estar pensando: <em>"Como alguém colocaria algo no MEU site se o servidor é meu?"</em></p>
-                    
+                    <h3>🕵️‍♂️ Anatomia de um Ataque</h3>
+                    <p>Como alguém infecta seu site? Pela "carona" em campos de <strong>comentários</strong> ou <strong>buscas</strong>.</p>
                     <div class="attack-scenario">
                         <div class="scenario-step">
-                            <strong>1. A Brecha:</strong>
-                            <p>O hacker vai até o seu campo de <strong>comentários</strong> ou <strong>busca</strong> e digita: <br><code>&lt;img src="http://hacker.com/pixel-espiao"&gt;</code></p>
+                            <strong>1. A Brecha</strong>
+                            <p>O hacker escreve <code>&lt;img src="virus.jpg"&gt;</code> no seu chat.</p>
                         </div>
                         <div class="scenario-step">
-                            <strong>2. A Armadilha:</strong>
-                            <p>Seu site salva esse comentário. Agora, todo visitante que abrir a página vai, sem saber, baixar a imagem do hacker.</p>
+                            <strong>2. A Armadilha</strong>
+                            <p>O navegador do seu cliente baixa a imagem do hacker automaticamente.</p>
                         </div>
                         <div class="scenario-step">
-                            <strong>3. O Roubo:</strong>
-                            <p>Através dessa "simples imagem", o hacker descobre o IP do visitante, onde ele mora e pode até tentar infectar o navegador dele.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="attack-defense">
-                        <strong>🛡️ O que o CSP faz?</strong>
-                        <p>O navegador lê o comentário do hacker, olha para o seu CSP e diz: <em>"Opa! Essa imagem vem de um site estranho e a dona do site só me autorizou carregar coisas do próprio site ('self'). <strong>BLOQUEADO!</strong>"</em></p>
-                    </div>
-                <!-- Unsafe-Inline Alert -->
-                <div class="attack-anatomy" style="border-color: #ffcc00; background: rgba(255, 204, 0, 0.05);">
-                    <h3 style="color: #ffcc00;">⚠️ O Perigo do 'unsafe-inline'</h3>
-                    <p>Muitos tutoriais mandam você adicionar <code>'unsafe-inline'</code> para "consertar" erros no console. <strong>NÃO FAÇA ISSO!</strong></p>
-                    
-                    <div class="code-comparison">
-                        <div class="comp-box">
-                            <span style="color: #ff4d4d;">❌ Jeito Inseguro</span>
-                            <pre>&lt;button onclick="alerta()"&gt;Clique&lt;/button&gt;</pre>
-                            <small>O hacker pode injetar comandos aqui.</small>
-                        </div>
-                        <div class="comp-box">
-                            <span style="color: #00f2ff;">✅ Jeito Seguro (A+)</span>
-                            <pre>btn.addEventListener('click', alerta);</pre>
-                            <small>Código separado em arquivo .js</small>
-                        </div>
-                    </div>
-
-                    <p style="margin-top: 1rem; font-size: 0.9rem;">Para ganhar o <strong>A+</strong>, seu CSP deve conter apenas <code>'self'</code>. Se precisar de scripts externos, coloque a URL do site (ex: <code>https://google.com</code>).</p>
-                </div>
-            </div>
-
-            <!-- FAQ Section -->
-            <div class="step-container" id="faq">
-                <div class="step-number">??</div>
-                <h2>Por que isso não é automático? 🤔</h2>
-                <p>Se essas travas são tão boas, por que os navegadores já não deixam elas ligadas para todo mundo?</p>
-                
-                <div class="faq-grid">
-                    <div class="faq-card">
-                        <h3>A Regra do "Não Quebrar"</h3>
-                        <p>Se o Chrome ligasse o CSP máximo hoje, metade dos sites do mundo (incluindo sites de governo e bancos antigos) parariam de funcionar. O navegador precisa aceitar o "jeito antigo" para a internet não colapsar.</p>
-                    </div>
-                    <div class="faq-card">
-                        <h3>Segurança é uma Escolha</h3>
-                        <p>Ao configurar esses headers, você está dando um sinal para o navegador: <em>"Ei, eu limpei meu código e meu site é moderno. Pode aplicar a segurança máxima aqui!"</em></p>
-                    </div>
-                    <div class="faq-card">
-                        <h3>Facilidade vs. Rigor</h3>
-                        <p>Muitos sites são feitos "nas pressas". Manter tudo organizado e seguro exige mais tempo e estudo. O Mozilla Observatory premia quem decide fazer o caminho mais difícil, porém correto.</p>
-                    </div>
-                </div>
-
-                <div class="comparison-box">
-                    <h3>👑 Header vs 📜 Meta Tag</h3>
-                    <div class="comparison-grid">
-                        <div class="comp-item">
-                            <strong>HTTP Header</strong>
-                            <p>O segurança barra na porta da frente. Protege o site ANTES dele carregar. É o que o Mozilla exige para o A+.</p>
-                        </div>
-                        <div class="comp-item">
-                            <strong>Meta Tag</strong>
-                            <p>É um aviso colado na parede lá dentro. O script malicioso pode rodar antes do navegador ler a tag. Não suporta HSTS.</p>
+                            <strong>3. O Bloqueio</strong>
+                            <p>Com CSP, o navegador diz: "Essa fonte não é autorizada! BLOQUEADO!".</p>
                         </div>
                     </div>
                 </div>
-            <!-- Step 6 -->
-            <div class="step-container" id="step-6">
-                <div class="step-number">06</div>
-                <h2>Guia Visual: Cloudflare ☁️</h2>
-                <p>Veja como preencher a tela de <strong>Transform Rules</strong> sem erro:</p>
+            </section>
+
+            <!-- FASE 2: CONSTRUÇÃO -->
+            <section class="phase-section" id="fase-2">
+                <div class="phase-badge">Fase 02: Construção</div>
+                <h2>🏗️ Erguendo os Muros (Cloudflare)</h2>
+                <p>Use as <strong>Transform Rules</strong> para injetar esses headers no seu domínio.</p>
                 
                 <div class="cloudflare-ui-mockup">
                     <div class="ui-row">
-                        <span>Filtro:</span>
-                        <code class="ui-code">Hostname</code>
-                        <span>equals</span>
-                        <code class="ui-code">seusite.com</code>
+                        <span>Filtro:</span> <code class="ui-code">Hostname</code> <span>contains</span> <code class="ui-code">seusite.com</code>
                     </div>
-                    <p style="font-size: 0.75rem; margin: -0.5rem 0 1rem 4.5rem; color: var(--accent-primary);">↑ Isso faz a regra valer APENAS para este site!</p>
                     <div class="ui-divider"></div>
                     <div class="ui-row">
-                        <span>Header:</span>
-                        <code class="ui-code">Content-Security-Policy</code>
-                        <span>=</span>
-                        <code class="ui-code">default-src 'self';</code>
+                        <span>Ação:</span> <code class="ui-code">Set Static Header</code>
                     </div>
                     <div class="ui-row">
-                        <span>Header:</span>
-                        <code class="ui-code">X-Content-Type-Options</code>
-                        <span>=</span>
-                        <code class="ui-code">nosniff</code>
+                        <code class="ui-code">Content-Security-Policy</code> <span>=</span> <code class="ui-code">default-src 'self';</code>
                     </div>
                     <div class="ui-row">
-                        <span>Header:</span>
-                        <code class="ui-code">X-Frame-Options</code>
-                        <span>=</span>
-                        <code class="ui-code">DENY</code>
+                        <code class="ui-code">X-Content-Type-Options</code> <span>=</span> <code class="ui-code">nosniff</code>
                     </div>
                 </div>
 
-                <div class="tip-box" style="border-color: #f38020; background: rgba(243, 128, 32, 0.05);">
-                    <strong>Dica Cloudflare:</strong> No campo "Value" do Hostname, nunca use <code>https://</code> ou asteriscos <code>*</code> com o operador "equals". 
-                    <br><br>
-                    <strong>Set ou Add?</strong> Escolha sempre <strong>"Set Static"</strong>. Isso garante que sua regra substitua qualquer configuração antiga, evitando conflitos que tiram pontos no Mozilla.
-                </div>
-            <!-- Step 7 -->
-            <div class="step-container" id="step-7">
-                <div class="step-number">07</div>
-                <h2>Dica Ninja: Teste via Terminal 🥷</h2>
-                <p>Não quer esperar o Mozilla? Teste seus headers agora mesmo usando o terminal do seu PC.</p>
-                
-                <div class="code-box" style="border-color: var(--accent-secondary);">
-                    <div class="code-header">
-                        <span>POWERSHELL / TERMINAL</span>
-                    </div>
-                    <pre>curl -I https://seusite.com?v=1</pre>
-                </div>
-
-                <p style="margin-top: 1.5rem; font-size: 0.9rem;">
-                    <strong>💡 Truque Ninja:</strong> Adicione <code>?v=1</code> no final para "quebrar o cache" e ver o resultado mais recente do Cloudflare!
-                </p>
-
-                <div class="tip-box" style="border-color: var(--accent-primary); background: rgba(0, 242, 255, 0.05); margin-top: 2rem;">
-                    <strong>🖥️ Prefere o Navegador?</strong> Aperte <code>F12</code> > Aba <code>Network</code> > <code>F5</code> > Clique no nome do seu site > Aba <code>Headers</code>. Procure por <strong>Response Headers</strong>!
-                </div>
-            <!-- Step 8 -->
-            <div class="step-container" id="step-8">
-                <div class="step-number">08</div>
-                <h2>Meu teste não atualiza! 🔄</h2>
-                <p>O Mozilla Observatory guarda o resultado por 24h. Se você mudou algo e a nota continua igual, siga estes passos:</p>
-                
                 <div class="troubleshoot-grid">
-                    <div class="ts-card">
-                        <h3>1. Force Rescan</h3>
-                        <p>Ao digitar seu domínio, clique no botão <strong>"Force Rescan"</strong>. Isso obriga o Mozilla a olhar seu site de novo agora mesmo.</p>
+                    <div class="ts-card" style="border-color: #ffcc00; background: rgba(255, 204, 0, 0.05);">
+                        <h3>⚠️ Alerta: Unsafe-Inline</h3>
+                        <p>Nunca use <code>'unsafe-inline'</code>. Mova seus scripts para arquivos <code>.js</code> separados. Isso é o que garante o A+.</p>
+                        <div class="code-comparison" style="margin-top: 1rem;">
+                            <div class="comp-box">
+                                <span style="color: #ff4d4d;">❌ Inseguro</span>
+                                <code>onclick="acao()"</code>
+                            </div>
+                            <div class="comp-box">
+                                <span style="color: #00f2ff;">✅ Seguro</span>
+                                <code>addEventListener</code>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ts-card">
-                        <h3>2. Verifique a Data</h3>
-                        <p>Olhe no topo do teste se a data do <em>"Last Scan"</em> é a de hoje. Se for antiga, você está vendo um "fantasma" do passado.</p>
-                    </div>
-                    <div class="ts-card" style="border-color: #ff4d4d; background: rgba(255, 77, 77, 0.05);">
-                        <h3>🚨 A Regra Não Funciona?</h3>
-                        <p>Se o terminal não mostra os headers, confira:</p>
-                        <ul>
-                            <li>A regra está <strong>Ativa (ON)</strong> no Cloudflare?</li>
-                            <li>O operador é <strong>"contains"</strong>? (Mais seguro que "equals")</li>
-                            <li>Você esperou 2 minutos para o deploy?</li>
-                        </ul>
+                    <div class="ts-card" style="border-color: var(--accent-primary); background: rgba(var(--accent-primary-rgb), 0.05);">
+                        <h3>✅ Dica: Use sempre SET</h3>
+                        <p>O comando <strong>Set Static</strong> garante que sua regra nova apague qualquer configuração velha ou errada.</p>
                     </div>
                 </div>
-            <!-- Step 9 -->
-            <div class="step-container" id="step-9">
-                <div class="step-number">09</div>
-                <h2>O Mistério do Mozilla 🕵️‍♂️</h2>
-                <p>Por que a nota às vezes muda "do nada" ou demora para atualizar?</p>
+            </section>
+
+            <!-- FASE 3: INSPEÇÃO -->
+            <section class="phase-section" id="fase-3">
+                <div class="phase-badge">Fase 03: Inspeção</div>
+                <h2>🥷 Verificação Ninja</h2>
+                <p>Não confie no Mozilla enquanto estiver configurando. Use o terminal ou o DevTools.</p>
+
+                <div class="verify-grid">
+                    <div class="verify-item">
+                        <h3>O Terminal (Curl)</h3>
+                        <pre>curl -I https://seusite.com?v=1</pre>
+                        <small>O <code>?v=1</code> quebra o cache e mostra a verdade.</small>
+                    </div>
+                    <div class="verify-item">
+                        <h3>O Navegador (F12)</h3>
+                        <p>Aba <strong>Network</strong> > <strong>Response Headers</strong>. Se o header estiver lá, você venceu!</p>
+                    </div>
+                </div>
+
+                <div class="tip-box" style="border-color: #ffcc00; background: rgba(255, 204, 0, 0.05); margin-top: 2rem;">
+                    <strong>Dica do Histórico:</strong> Mesmo que o site diga "Just Now", ele pode estar te mostrando cache de meses atrás. Confira sempre o <em>Last Scan</em> no histórico!
+                </div>
+            </section>
+
+            <!-- FASE 4: O OLIMPO -->
+            <section class="phase-section" id="fase-4">
+                <div class="phase-badge">Fase 04: O Olimpo</div>
+                <h2>🏛️ Além do A+</h2>
+                <p>O que separa os iniciantes dos verdadeiros mestres da segurança web?</p>
                 
                 <div class="faq-grid">
                     <div class="faq-card">
-                        <h3>O Caminho do Teste</h3>
-                        <p>O Mozilla pode estar testando o link <code>http</code> em vez do <code>https</code>. Use sempre a URL completa no teste para evitar erros de redirecionamento.</p>
+                        <h3>Dilema dos Gigantes</h3>
+                        <p>Sites como Supabase ou Vercel às vezes tiram notas menores (60/70) porque são muito complexos. Você, por ser ágil, conseguiu a perfeição técnica.</p>
                     </div>
                     <div class="faq-card">
-                        <h3>A Geografia do Cloudflare</h3>
-                        <p>Sua regra pode ter chegado no servidor do Brasil, mas não no dos EUA (onde o Mozilla mora). Espere alguns minutos para a regra se espalhar pelo mundo.</p>
-                    </div>
-                    <div class="faq-card">
-                        <h3>O Header não Mente</h3>
-                        <p>Se o seu <code>curl -I</code> mostra o header, <strong>o trabalho está feito.</strong> A nota é apenas uma consequência que logo vai chegar.</p>
+                        <h3>Nível Google (Trusted Types)</h3>
+                        <p>O Google usa <strong>Trusted Types</strong>. É uma trava que impede que qualquer texto comum vire script sem um atestado de higiene total.</p>
                     </div>
                 </div>
-            <!-- Step 10 -->
-            <div class="step-container" id="step-10">
-                <div class="step-number">10</div>
-                <h2>O Inimigo Oculto: WWW 🕵️‍♀️</h2>
-                <p>Nota 10 no terminal e 9 no Mozilla? O culpado costuma ser o <code>www</code>.</p>
-                
-                <div class="tip-box" style="border-color: #ff00ff; background: rgba(255, 0, 255, 0.05);">
-                    <strong>A Solução:</strong> Mude o seu filtro no Cloudflare de <code>equals</code> para <strong><code>contains</code></strong>. 
-                    <br><br>
-                    Isso faz com que a regra proteja tanto o <code>seusite.com</code> quanto o <code>www.seusite.com</code>. Se o Mozilla testar qualquer um dos dois, ele vai encontrar todos os seus headers lá!
-                </div>
-            <!-- Step 11 -->
-            <div class="step-container" id="step-11">
-                <div class="step-number">11</div>
-                <h2>Até o Mozilla erra? 🎭</h2>
-                <p>Se você escanear o site <code>mozilla.org</code>, vai ver algo curioso:</p>
-                
-                <div class="tip-box" style="border-color: var(--accent-secondary); background: rgba(var(--accent-primary-rgb), 0.05);">
-                    <strong>A Ironia:</strong> Às vezes o site do próprio Mozilla não tira nota 10/10 em todos os testes! 
-                    <br><br>
-                    <strong>Lição:</strong> A segurança é um processo contínuo. Tirar 105/100 é possível com bônus, mas o mais importante é ter os headers principais ativos. Se o "Dono da Bola" às vezes escorrega, não se cobre tanto pela perfeição imediata!
-                </div>
-            <!-- Step 12 -->
-            <div class="step-container" id="step-12">
-                <div class="step-number">12</div>
-                <h2>O Dilema dos Gigantes 🏗️</h2>
-                <p>Por que sites como Supabase ou Vercel às vezes tiram notas menores que a sua?</p>
-                
-                <div class="tip-box" style="border-color: #00f2ff; background: rgba(0, 242, 255, 0.05);">
-                    <strong>A Resposta:</strong> Quanto maior o site, mais difícil é ser 100% rigoroso. Eles usam muitos scripts externos que "sujam" a segurança.
-                    <br><br>
-                    <strong>Sua Vantagem:</strong> Por estar começando do jeito certo, você consegue o <strong>A+</strong> que os gigantes levam anos para tentar alcançar. Você não está apenas seguindo um tutorial, você está construindo um site com o padrão de elite da web! 🥇
-                </div>
-            <!-- Step 13 -->
-            <div class="step-container" id="step-13">
-                <div class="step-number">13</div>
-                <h2>O Nível Google: Trusted Types 🦾</h2>
-                <p>Viu algo como <code>trusted-types</code> no site do Google? Você encontrou o "Nível Divino" da segurança.</p>
-                
-                <div class="tip-box" style="border-color: #4285f4; background: rgba(66, 133, 244, 0.05);">
-                    <strong>Trusted Types:</strong> É uma trava que impede que qualquer "texto comum" vire código no navegador. Tudo precisa de um "selo de confiança" do próprio site.
-                    <br><br>
-                    <strong>Report-URI:</strong> É o "dedo-duro". O navegador avisa o dono do site sempre que alguém tenta fazer algo proibido. É a segurança que vigia e avisa ao mesmo tempo! 📢
-                </div>
-            </div>
-        </div>
+            </section>
+        </main>
 
         <footer>
-            <p>Parabéns! Você está no caminho para o A+. <br> Teste seu site em <a href="https://observatory.mozilla.org/" target="_blank">Mozilla Observatory</a></p>
+            <div class="footer-content">
+                <p>© 2026 SafeLearn - Masterclass de Segurança Web</p>
+                <p>Criado com 🛡️ por Inteligência Mil Grau (ET Labs)</p>
+            </div>
         </footer>
     </div>
-
-    <div class="toast" id="toast">Copiado com sucesso!</div>
 
     <script src="script.js"></script>
 </body>
