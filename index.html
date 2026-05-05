@@ -121,6 +121,30 @@ Permissions-Policy: camera=(), microphone=()
                     </pre>
                 </div>
             </div>
+
+            <!-- Step 4 -->
+            <div class="step-container" id="step-4">
+                <div class="step-number">04</div>
+                <h2>Onde eu colo isso? 📍</h2>
+                <p>Estes headers não vão no HTML. Eles vão na configuração do seu Host.</p>
+                
+                <div class="platform-grid">
+                    <div class="platform-card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Cloudflare_Logo.png" alt="Cloudflare" height="30">
+                        <h3>Cloudflare</h3>
+                        <p>Vá em <strong>Rules > Transform Rules</strong> e crie uma regra de "Modify Response Header".</p>
+                    </div>
+                    <div class="platform-card">
+                        <img src="https://assets.vercel.com/image/upload/v1588805177/repositories/vercel/logo.png" alt="Vercel" height="30">
+                        <h3>Vercel</h3>
+                        <p>Crie um arquivo <code>vercel.json</code> na raiz do projeto com a chave "headers".</p>
+                    </div>
+                    <div class="platform-card">
+                        <h3>Apache (.htaccess)</h3>
+                        <p>Adicione: <code>Header set X-Frame-Options "DENY"</code> no seu arquivo .htaccess.</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <footer>
