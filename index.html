@@ -401,6 +401,17 @@ Permissions-Policy: camera=(), microphone=()
                         <p>Se o seu <code>curl -I</code> mostra o header, <strong>o trabalho está feito.</strong> A nota é apenas uma consequência que logo vai chegar.</p>
                     </div>
                 </div>
+            <!-- Step 10 -->
+            <div class="step-container" id="step-10">
+                <div class="step-number">10</div>
+                <h2>O Inimigo Oculto: WWW 🕵️‍♀️</h2>
+                <p>Nota 10 no terminal e 9 no Mozilla? O culpado costuma ser o <code>www</code>.</p>
+                
+                <div class="tip-box" style="border-color: #ff00ff; background: rgba(255, 0, 255, 0.05);">
+                    <strong>A Solução:</strong> Mude o seu filtro no Cloudflare de <code>equals</code> para <strong><code>contains</code></strong>. 
+                    <br><br>
+                    Isso faz com que a regra proteja tanto o <code>seusite.com</code> quanto o <code>www.seusite.com</code>. Se o Mozilla testar qualquer um dos dois, ele vai encontrar todos os seus headers lá!
+                </div>
             </div>
         </div>
 
