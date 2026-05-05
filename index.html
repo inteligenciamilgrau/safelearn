@@ -356,6 +356,26 @@ Permissions-Policy: camera=(), microphone=()
                 <p style="margin-top: 1.5rem; font-size: 0.9rem;">
                     O comando <code>-I</code> mostra apenas o "envelope" do site. Se você vir suas regras na lista que aparecer, significa que <strong>está funcionando!</strong>
                 </p>
+            <!-- Step 8 -->
+            <div class="step-container" id="step-8">
+                <div class="step-number">08</div>
+                <h2>Meu teste não atualiza! 🔄</h2>
+                <p>O Mozilla Observatory guarda o resultado por 24h. Se você mudou algo e a nota continua igual, siga estes passos:</p>
+                
+                <div class="troubleshoot-grid">
+                    <div class="ts-card">
+                        <h3>1. Force Rescan</h3>
+                        <p>Ao digitar seu domínio, clique no botão <strong>"Force Rescan"</strong>. Isso obriga o Mozilla a olhar seu site de novo agora mesmo.</p>
+                    </div>
+                    <div class="ts-card">
+                        <h3>2. Verifique a Data</h3>
+                        <p>Olhe no topo do teste se a data do <em>"Last Scan"</em> é a de hoje. Se for antiga, você está vendo um "fantasma" do passado.</p>
+                    </div>
+                    <div class="ts-card">
+                        <h3>3. Use o Terminal</h3>
+                        <p>Se o <code>curl -I</code> mostrar o header, o erro é do Mozilla. Confie no seu terminal, ele não mente!</p>
+                    </div>
+                </div>
             </div>
         </div>
 
