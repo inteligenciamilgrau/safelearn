@@ -219,6 +219,32 @@ Permissions-Policy: camera=(), microphone=()
                     <br><br>
                     <strong>🔗 Como combinar tudo?</strong> Use o ponto e vírgula <code>;</code> para separar as ordens. Exemplo: <code>default-src 'self'; frame-ancestors 'none';</code>
                 </div>
+
+                <!-- Anatomia do Ataque -->
+                <div class="attack-anatomy">
+                    <h3>🕵️‍♂️ Anatomia de um Ataque (Na Prática)</h3>
+                    <p>Você deve estar pensando: <em>"Como alguém colocaria algo no MEU site se o servidor é meu?"</em></p>
+                    
+                    <div class="attack-scenario">
+                        <div class="scenario-step">
+                            <strong>1. A Brecha:</strong>
+                            <p>O hacker vai até o seu campo de <strong>comentários</strong> ou <strong>busca</strong> e digita: <br><code>&lt;img src="http://hacker.com/pixel-espiao"&gt;</code></p>
+                        </div>
+                        <div class="scenario-step">
+                            <strong>2. A Armadilha:</strong>
+                            <p>Seu site salva esse comentário. Agora, todo visitante que abrir a página vai, sem saber, baixar a imagem do hacker.</p>
+                        </div>
+                        <div class="scenario-step">
+                            <strong>3. O Roubo:</strong>
+                            <p>Através dessa "simples imagem", o hacker descobre o IP do visitante, onde ele mora e pode até tentar infectar o navegador dele.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="attack-defense">
+                        <strong>🛡️ O que o CSP faz?</strong>
+                        <p>O navegador lê o comentário do hacker, olha para o seu CSP e diz: <em>"Opa! Essa imagem vem de um site estranho e a dona do site só me autorizou carregar coisas do próprio site ('self'). <strong>BLOQUEADO!</strong>"</em></p>
+                    </div>
+                </div>
             </div>
 
             <!-- FAQ Section -->
