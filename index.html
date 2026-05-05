@@ -262,6 +262,41 @@ Permissions-Policy: camera=(), microphone=()
                         </div>
                     </div>
                 </div>
+            <!-- Step 6 -->
+            <div class="step-container" id="step-6">
+                <div class="step-number">06</div>
+                <h2>Guia Visual: Cloudflare ☁️</h2>
+                <p>Veja como preencher a tela de <strong>Transform Rules</strong> sem erro:</p>
+                
+                <div class="cloudflare-ui-mockup">
+                    <div class="ui-row">
+                        <span>Filtro:</span>
+                        <code class="ui-code">All incoming requests</code> (Recomendado para iniciantes)
+                    </div>
+                    <div class="ui-divider"></div>
+                    <div class="ui-row">
+                        <span>Header:</span>
+                        <code class="ui-code">Content-Security-Policy</code>
+                        <span>=</span>
+                        <code class="ui-code">default-src 'self';</code>
+                    </div>
+                    <div class="ui-row">
+                        <span>Header:</span>
+                        <code class="ui-code">X-Content-Type-Options</code>
+                        <span>=</span>
+                        <code class="ui-code">nosniff</code>
+                    </div>
+                    <div class="ui-row">
+                        <span>Header:</span>
+                        <code class="ui-code">X-Frame-Options</code>
+                        <span>=</span>
+                        <code class="ui-code">DENY</code>
+                    </div>
+                </div>
+
+                <div class="tip-box" style="border-color: #f38020; background: rgba(243, 128, 32, 0.05);">
+                    <strong>Dica Cloudflare:</strong> No campo "Value" do Hostname, nunca use <code>https://</code>. Use apenas o nome puro: <code>exemplo.com</code>.
+                </div>
             </div>
         </div>
 
