@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mozilla Observatory: O Guia A+</title>
     <meta name="description" content="Aprenda a configurar seu site para obter nota máxima no Mozilla Observatory com este guia interativo e simplificado.">
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,7 +61,7 @@
         <section id="config" class="checklist animate">
             <h2 style="font-size: 2.5rem; margin-bottom: 2rem; text-align: center;">Checklist de Ouro</h2>
             
-            <div class="checklist-item" onclick="toggleItem(this)">
+            <div class="checklist-item">
                 <div class="checkbox"></div>
                 <div>
                     <strong>Remover headers desnecessários</strong>
@@ -68,7 +69,7 @@
                 </div>
             </div>
 
-            <div class="checklist-item" onclick="toggleItem(this)">
+            <div class="checklist-item">
                 <div class="checkbox"></div>
                 <div>
                     <strong>Configurar CSP restrito</strong>
@@ -76,7 +77,7 @@
                 </div>
             </div>
 
-            <div class="checklist-item" onclick="toggleItem(this)">
+            <div class="checklist-item">
                 <div class="checkbox"></div>
                 <div>
                     <strong>Habilitar HSTS com Preload</strong>
@@ -88,7 +89,7 @@
         <div class="code-block animate">
             <div class="code-header">
                 <span>CONFIGURAÇÃO RECOMENDADA (CLOUDFLARE WORKER / NGINX)</span>
-                <button class="copy-btn" onclick="copyCode()">Copiar</button>
+                <button class="copy-btn">Copiar</button>
             </div>
             <pre id="code-content">
 Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:;
