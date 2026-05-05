@@ -244,6 +244,25 @@ Permissions-Policy: camera=(), microphone=()
                         <strong>🛡️ O que o CSP faz?</strong>
                         <p>O navegador lê o comentário do hacker, olha para o seu CSP e diz: <em>"Opa! Essa imagem vem de um site estranho e a dona do site só me autorizou carregar coisas do próprio site ('self'). <strong>BLOQUEADO!</strong>"</em></p>
                     </div>
+                <!-- Unsafe-Inline Alert -->
+                <div class="attack-anatomy" style="border-color: #ffcc00; background: rgba(255, 204, 0, 0.05);">
+                    <h3 style="color: #ffcc00;">⚠️ O Perigo do 'unsafe-inline'</h3>
+                    <p>Muitos tutoriais mandam você adicionar <code>'unsafe-inline'</code> para "consertar" erros no console. <strong>NÃO FAÇA ISSO!</strong></p>
+                    
+                    <div class="code-comparison">
+                        <div class="comp-box">
+                            <span style="color: #ff4d4d;">❌ Jeito Inseguro</span>
+                            <pre>&lt;button onclick="alerta()"&gt;Clique&lt;/button&gt;</pre>
+                            <small>O hacker pode injetar comandos aqui.</small>
+                        </div>
+                        <div class="comp-box">
+                            <span style="color: #00f2ff;">✅ Jeito Seguro (A+)</span>
+                            <pre>btn.addEventListener('click', alerta);</pre>
+                            <small>Código separado em arquivo .js</small>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">Para ganhar o <strong>A+</strong>, seu CSP deve conter apenas <code>'self'</code>. Se precisar de scripts externos, coloque a URL do site (ex: <code>https://google.com</code>).</p>
                 </div>
             </div>
 
