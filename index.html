@@ -3,109 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mozilla Observatory: O Guia A+</title>
-    <meta name="description" content="Aprenda a configurar seu site para obter nota máxima no Mozilla Observatory com este guia interativo e simplificado.">
+    <title>Mozilla Observatory: O Guia Interativo A+</title>
+    <meta name="description" content="Guia definitivo para configurar segurança web e passar no Mozilla Observatory.">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <div class="progress-bar" id="page-progress"></div>
+
     <div class="container">
         <nav>
-            <div class="logo"><span class="gradient-text">Observatory</span> Guide</div>
-            <div class="nav-links">
-                <a href="#headers" style="color: var(--text-muted); text-decoration: none; margin-left: 20px;">Headers</a>
-                <a href="#config" style="color: var(--text-muted); text-decoration: none; margin-left: 20px;">Configuração</a>
-            </div>
+            <div class="logo"><span class="gradient-text">SAFE</span>LEARN</div>
+            <div class="score-badge">SCORE: <span id="security-score">0</span>%</div>
         </nav>
 
-        <section class="hero animate">
-            <span class="badge">Segurança Web</span>
-            <h1>Conquiste o seu <span class="gradient-text">A+</span> no Mozilla Observatory</h1>
-            <p>Configurar os headers de segurança não precisa ser um pesadelo. Siga os passos abaixo e proteja seu site como um profissional.</p>
-            <div class="hero-image-container">
-                <img src="hero.png" alt="Cybersecurity Dashboard" class="hero-img">
-            </div>
-        </section>
-
-        <section id="headers" class="security-grid">
-            <div class="card animate delay-1">
-                <h3>CSP</h3>
-                <p>O <strong>Content Security Policy</strong> é a sua primeira linha de defesa. Ele diz ao navegador quais scripts, estilos e fontes são confiáveis. Sem ele, você fica vulnerável a XSS.</p>
-            </div>
-            <div class="card animate delay-1">
-                <h3>HSTS</h3>
-                <p>O <strong>Strict-Transport-Security</strong> garante que o navegador só se comunique via HTTPS. Isso evita ataques de "downgrade" e interceptação de dados.</p>
-            </div>
-            <div class="card animate delay-2">
-                <h3>X-Frame-Options</h3>
-                <p>Impede que seu site seja colocado dentro de um <code><iframe></code> em sites maliciosos, protegendo seus usuários contra o famoso <strong>Clickjacking</strong>.</p>
-            </div>
-            <div class="card animate delay-2">
-                <h3>Referrer-Policy</h3>
-                <p>Controla quanta informação do seu site é enviada no cabeçalho "Referer" quando o usuário clica em um link externo. Privacidade em primeiro lugar!</p>
-            </div>
-            <div class="card animate delay-3">
-                <h3>Permissions-Policy</h3>
-                <p>Define quais recursos do navegador seu site pode usar (Câmera, Microfone, Geolocalização). Se você não usa, desative tudo por segurança.</p>
-            </div>
-            <div class="card animate delay-3">
-                <h3>Subresource Integrity</h3>
-                <p>Garante que scripts carregados de CDNs não foram alterados. Use o atributo <code>integrity</code> em todas as suas tags <code>&lt;script&gt;</code>.</p>
-            </div>
-        </section>
-
-        <section id="config" class="checklist animate">
-            <h2 style="font-size: 2.5rem; margin-bottom: 2rem; text-align: center;">Checklist de Ouro</h2>
+        <section class="hero">
+            <span class="badge">Missão: Segurança Total</span>
+            <h1>Seu site está <span class="gradient-text">vulnerável</span>?</h1>
+            <p>Não entre em pânico. Este guia interativo vai te ensinar a configurar os headers de segurança e alcançar o A+ no Mozilla Observatory, passo a passo.</p>
             
-            <div class="checklist-item">
-                <div class="checkbox"></div>
-                <div>
-                    <strong>Remover headers desnecessários</strong>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">Apague o 'X-Powered-By' e 'Server' para não dar pistas a atacantes.</p>
-                </div>
-            </div>
+            <button class="cta-btn" id="start-guide">Começar o Guia ↓</button>
 
-            <div class="checklist-item">
-                <div class="checkbox"></div>
-                <div>
-                    <strong>Configurar CSP restrito</strong>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">Comece com 'default-src self' e vá liberando apenas o que for essencial.</p>
-                </div>
-            </div>
-
-            <div class="checklist-item">
-                <div class="checkbox"></div>
-                <div>
-                    <strong>Habilitar HSTS com Preload</strong>
-                    <p style="font-size: 0.8rem; color: var(--text-muted);">Use 'max-age=63072000; includeSubDomains; preload' para nota máxima.</p>
-                </div>
+            <div class="hero-image-container">
+                <img src="hero.png" alt="Segurança" class="hero-img">
             </div>
         </section>
 
-        <div class="code-block animate">
-            <div class="code-header">
-                <span>CONFIGURAÇÃO RECOMENDADA (CLOUDFLARE WORKER / NGINX)</span>
-                <button class="copy-btn">Copiar</button>
+        <div class="guide-steps">
+            <!-- Step 1 -->
+            <div class="step-container" id="step-1">
+                <div class="step-number">01</div>
+                <h2>Conheça seus Defensores</h2>
+                <p>Clique nos cards abaixo para entender o que cada header faz.</p>
+                
+                <div class="security-grid">
+                    <div class="card" data-header="CSP">
+                        <div class="card-icon">🛡️</div>
+                        <h3>CSP</h3>
+                        <p>O mestre do controle. Define o que pode rodar no seu site.</p>
+                        <div class="card-detail">Previne ataques de Cross-Site Scripting (XSS).</div>
+                    </div>
+                    <div class="card" data-header="HSTS">
+                        <div class="card-icon">🔒</div>
+                        <h3>HSTS</h3>
+                        <p>Força a conexão segura via HTTPS sempre.</p>
+                        <div class="card-detail">Impede ataques de interceptação (MITM).</div>
+                    </div>
+                    <div class="card" data-header="XFO">
+                        <div class="card-icon">🖼️</div>
+                        <h3>X-Frame</h3>
+                        <p>Bloqueia seu site em iframes maliciosos.</p>
+                        <div class="card-detail">Protege contra Clickjacking.</div>
+                    </div>
+                </div>
             </div>
-            <pre id="code-content">
-Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:;
-Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-X-Content-Type-Options: nosniff
+
+            <!-- Step 2 -->
+            <div class="step-container" id="step-2">
+                <div class="step-number">02</div>
+                <h2>Mão na Massa</h2>
+                <p>Marque as tarefas abaixo para aumentar seu score de segurança.</p>
+                
+                <div class="checklist">
+                    <div class="checklist-item" data-points="35">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <strong>Configurar CSP Restrito</strong>
+                            <span>Bloqueie tudo com default-src 'self'</span>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-points="25">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <strong>Ativar HSTS Preload</strong>
+                            <span>Diga ao mundo que seu site é 100% HTTPS</span>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-points="20">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <strong>Remover Powered-By</strong>
+                            <span>Não revele sua tecnologia a atacantes</span>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-points="20">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <strong>Bloquear Geolocalização</strong>
+                            <span>Desative permissões de hardware desnecessárias</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-container" id="step-3">
+                <div class="step-number">03</div>
+                <h2>O Código Mestre</h2>
+                <p>Copie esta configuração e aplique no seu servidor (Cloudflare, Nginx, Apache).</p>
+                
+                <div class="code-box">
+                    <div class="code-header">
+                        <span>SECURITY HEADERS CONFIG</span>
+                        <button class="copy-btn">Copiar Código</button>
+                    </div>
+                    <pre id="code-content">
+Content-Security-Policy: default-src 'self';
+Strict-Transport-Security: max-age=63072000; preload
 X-Frame-Options: DENY
-X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
 Referrer-Policy: strict-origin-when-cross-origin
-Permissions-Policy: camera=(), microphone=(), geolocation=()
-            </pre>
+Permissions-Policy: camera=(), microphone=()
+                    </pre>
+                </div>
+            </div>
         </div>
 
-        <footer style="padding: 4rem 0; text-align: center; color: var(--text-muted); border-top: 1px solid var(--glass-border);">
-            <p>Feito com ❤️ para a comunidade de segurança web.</p>
+        <footer>
+            <p>Parabéns! Você está no caminho para o A+. <br> Teste seu site em <a href="https://observatory.mozilla.org/" target="_blank">Mozilla Observatory</a></p>
         </footer>
     </div>
+
+    <div class="toast" id="toast">Copiado com sucesso!</div>
 
     <script src="script.js"></script>
 </body>
