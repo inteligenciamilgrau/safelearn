@@ -371,9 +371,14 @@ Permissions-Policy: camera=(), microphone=()
                         <h3>2. Verifique a Data</h3>
                         <p>Olhe no topo do teste se a data do <em>"Last Scan"</em> é a de hoje. Se for antiga, você está vendo um "fantasma" do passado.</p>
                     </div>
-                    <div class="ts-card">
-                        <h3>3. Use o Terminal</h3>
-                        <p>Se o <code>curl -I</code> mostrar o header, o erro é do Mozilla. Confie no seu terminal, ele não mente!</p>
+                    <div class="ts-card" style="border-color: #ff4d4d; background: rgba(255, 77, 77, 0.05);">
+                        <h3>🚨 A Regra Não Funciona?</h3>
+                        <p>Se o terminal não mostra os headers, confira:</p>
+                        <ul>
+                            <li>A regra está <strong>Ativa (ON)</strong> no Cloudflare?</li>
+                            <li>O operador é <strong>"contains"</strong>? (Mais seguro que "equals")</li>
+                            <li>Você esperou 2 minutos para o deploy?</li>
+                        </ul>
                     </div>
                 </div>
             </div>
