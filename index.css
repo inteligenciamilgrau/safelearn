@@ -363,6 +363,46 @@ pre {
     margin-bottom: 0;
 }
 
+/* CSP Table */
+.csp-table-container {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.csp-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.csp-table th, .csp-table td {
+    padding: 1.2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.csp-table th {
+    background: rgba(255,255,255,0.05);
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+}
+
+.csp-table td code {
+    background: rgba(0, 242, 255, 0.1);
+    color: var(--accent-primary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.csp-table td.muted {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
 footer {
     padding: 80px 0;
     text-align: center;

@@ -145,6 +145,57 @@ Permissions-Policy: camera=(), microphone=()
                     </div>
                 </div>
             </div>
+
+            <!-- Step 5 -->
+            <div class="step-container" id="step-5">
+                <div class="step-number">05</div>
+                <h2>Dicionário CSP 📚</h2>
+                <p>O CSP é o header mais potente. Aqui estão os comandos que você mais vai usar:</p>
+                
+                <div class="csp-table-container">
+                    <table class="csp-table">
+                        <thead>
+                            <tr>
+                                <th>Diretiva</th>
+                                <th>O que controla?</th>
+                                <th>Exemplo Comum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>default-src</code></td>
+                                <td class="muted">Regra padrão (fallback)</td>
+                                <td><code>'self'</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>script-src</code></td>
+                                <td class="muted">Scripts JavaScript</td>
+                                <td><code>https://trusted.com</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>style-src</code></td>
+                                <td class="muted">Arquivos CSS</td>
+                                <td><code>'unsafe-inline'</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>img-src</code></td>
+                                <td class="muted">Imagens e Ícones</td>
+                                <td><code>'self' data:</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>font-src</code></td>
+                                <td class="muted">Fontes customizadas</td>
+                                <td><code>https://fonts.gstatic.com</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>frame-src</code></td>
+                                <td class="muted">Iframes e Embeds</td>
+                                <td><code>'none'</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
         <footer>
