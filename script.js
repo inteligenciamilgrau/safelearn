@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Botão de Início
     if (startBtn) {
         startBtn.addEventListener('click', () => {
-            document.getElementById('step-1').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('step-0').scrollIntoView({ behavior: 'smooth' });
         });
     }
 

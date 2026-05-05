@@ -421,6 +421,43 @@ pre {
     font-size: 0.95rem;
 }
 
+/* Villain Grid */
+.villain-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.villain-card {
+    background: rgba(255, 0, 0, 0.05);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.v-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.villain-card h3 {
+    color: #ff4d4d;
+    margin-bottom: 1rem;
+}
+
+.v-defense {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.3rem 0.8rem;
+    background: var(--accent-primary);
+    color: var(--bg-color);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
 footer {
     padding: 80px 0;
     text-align: center;

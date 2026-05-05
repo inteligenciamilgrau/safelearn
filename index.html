@@ -24,9 +24,9 @@
         <section class="hero">
             <span class="badge">Missão: Segurança Total</span>
             <h1>Seu site está <span class="gradient-text">vulnerável</span>?</h1>
-            <p>Não entre em pânico. Este guia interativo vai te ensinar a configurar os headers de segurança e alcançar o A+ no Mozilla Observatory, passo a passo.</p>
+            <p>Não entre em pânico. Este guia interativo vai te ensinar a proteger seu site contra "ladrões digitais" e alcançar o A+ no Mozilla Observatory.</p>
             
-            <button class="cta-btn" id="start-guide">Começar o Guia ↓</button>
+            <button class="cta-btn" id="start-guide">Entender o Perigo ↓</button>
 
             <div class="hero-image-container">
                 <img src="hero.png" alt="Segurança" class="hero-img">
@@ -34,6 +34,38 @@
         </section>
 
         <div class="guide-steps">
+            <!-- Step 0 -->
+            <div class="step-container" id="step-0">
+                <div class="step-number">00</div>
+                <h2>Por que estamos aqui? 🕵️‍♂️</h2>
+                <p>Antes de apertar botões, entenda quem são os "vilões" que o Mozilla Observatory quer que você vença:</p>
+                
+                <div class="villain-grid">
+                    <div class="villain-card">
+                        <div class="v-icon">👺</div>
+                        <h3>O Infiltrado (XSS)</h3>
+                        <p>Ele tenta colocar um código "espião" dentro do seu site para roubar senhas dos seus usuários.</p>
+                        <span class="v-defense">Defesa: CSP</span>
+                    </div>
+                    <div class="villain-card">
+                        <div class="v-icon">🕸️</div>
+                        <h3>A Fachada Falsa</h3>
+                        <p>O hacker "embrulha" seu site dentro de outro para enganar as pessoas e fazê-las clicar onde não deviam.</p>
+                        <span class="v-defense">Defesa: X-Frame-Options</span>
+                    </div>
+                    <div class="villain-card">
+                        <div class="v-icon">👂</div>
+                        <h3>O Fofoqueiro</h3>
+                        <p>Ele fica "ouvindo" a conversa entre o usuário e o seu site. Se não estiver blindado, ele rouba tudo.</p>
+                        <span class="v-defense">Defesa: HSTS</span>
+                    </div>
+                </div>
+                
+                <div class="tip-box" style="background: rgba(0, 242, 255, 0.05); border-color: var(--accent-primary);">
+                    <strong>Moral da história:</strong> O Mozilla Observatory é o seu <strong>Auditório de Segurança</strong>. Ele testa se você instalou as trancas certas para expulsar esses vilões.
+                </div>
+            </div>
+
             <!-- Step 1 -->
             <div class="step-container" id="step-1">
                 <div class="step-number">01</div>
