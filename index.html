@@ -149,51 +149,50 @@ Permissions-Policy: camera=(), microphone=()
             <!-- Step 5 -->
             <div class="step-container" id="step-5">
                 <div class="step-number">05</div>
-                <h2>Dicionário CSP 📚</h2>
-                <p>O CSP é o header mais potente. Aqui estão os comandos que você mais vai usar:</p>
+                <h2>Tradução para Humanos (CSP) 🧑‍🏫</h2>
+                <p>O CSP é o "Porteiro" do seu site. Veja como dar ordens para ele de um jeito simples:</p>
                 
                 <div class="csp-table-container">
                     <table class="csp-table">
                         <thead>
                             <tr>
-                                <th>Diretiva</th>
-                                <th>O que controla?</th>
-                                <th>Exemplo Comum</th>
+                                <th>O que vigiar?</th>
+                                <th>O que significa?</th>
+                                <th>Quem pode entrar? (Exemplos)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>default-src</code></td>
-                                <td class="muted">Regra padrão (fallback)</td>
-                                <td><code>'self'</code></td>
+                                <td><strong>A Regra Geral</strong><br><code>default-src</code></td>
+                                <td class="muted">Vale para tudo que você não explicou abaixo.</td>
+                                <td><code>'self'</code><br><small>(Apenas meu próprio site)</small></td>
                             </tr>
                             <tr>
-                                <td><code>script-src</code></td>
-                                <td class="muted">Scripts JavaScript</td>
-                                <td><code>https://trusted.com</code></td>
+                                <td><strong>Scripts (Ajudantes)</strong><br><code>script-src</code></td>
+                                <td class="muted">Arquivos que fazem o site "funcionar" (JS).</td>
+                                <td><code>https://google.com</code><br><small>(Só o Google tá liberado)</small></td>
                             </tr>
                             <tr>
-                                <td><code>style-src</code></td>
-                                <td class="muted">Arquivos CSS</td>
-                                <td><code>'unsafe-inline'</code></td>
+                                <td><strong>Estilos (Roupas)</strong><br><code>style-src</code></td>
+                                <td class="muted">Cores e fontes que deixam o site bonito (CSS).</td>
+                                <td><code>'unsafe-inline'</code><br><small>(Código escrito direto no HTML)</small></td>
                             </tr>
                             <tr>
-                                <td><code>img-src</code></td>
-                                <td class="muted">Imagens e Ícones</td>
-                                <td><code>'self' data:</code></td>
+                                <td><strong>Imagens</strong><br><code>img-src</code></td>
+                                <td class="muted">Fotos, logos e ícones.</td>
+                                <td><code>'self' data:</code><br><small>(Minhas fotos e ícones simples)</small></td>
                             </tr>
                             <tr>
-                                <td><code>font-src</code></td>
-                                <td class="muted">Fontes customizadas</td>
-                                <td><code>https://fonts.gstatic.com</code></td>
-                            </tr>
-                            <tr>
-                                <td><code>frame-src</code></td>
-                                <td class="muted">Iframes e Embeds</td>
-                                <td><code>'none'</code></td>
+                                <td><strong>Porta-Retrato</strong><br><code>frame-src</code></td>
+                                <td class="muted">Outros sites aparecendo dentro do seu.</td>
+                                <td><code>https://youtube.com</code><br><small>(Apenas vídeos do YouTube)</small></td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Dica do Porteiro:</strong> Sempre que ler <code>'self'</code>, pense em <strong>"Eu Mesmo"</strong>. É o seu site dizendo: "Eu confio em mim, mas não confio em estranhos!".
                 </div>
             </div>
         </div>

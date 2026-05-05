@@ -396,11 +396,29 @@ pre {
     padding: 0.2rem 0.5rem;
     border-radius: 4px;
     font-size: 0.85rem;
+    display: inline-block;
+    margin-bottom: 0.2rem;
+}
+
+.csp-table td small {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.6;
 }
 
 .csp-table td.muted {
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    min-width: 150px;
+}
+
+.tip-box {
+    margin-top: 2rem;
+    background: rgba(112, 0, 255, 0.1);
+    border-left: 4px solid var(--accent-secondary);
+    padding: 1.5rem;
+    border-radius: 0 12px 12px 0;
+    font-size: 0.95rem;
 }
 
 footer {
