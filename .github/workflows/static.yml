@@ -1,0 +1,61 @@
+name: Minificar e Fazer Deploy no GitHub Pages
+
+on:
+  # Roda automaticamente quando você fizer um "push" na branch main
+  push:
+    branches: ["main"]
+    
+  # Permite que você rode esse script manualmente clicando em um botão na aba Actions!
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  # Mantido como TRUE: cancela a fila antiga e coloca a sua alteração mais recente no ar logo
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Baixar o código do repositório
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Configurar ambiente (Node.js)
+        uses: actions/setup-node@v4
+        with:
+          # Pode trocar para '22' se quiser testar a versão mais recente!
+          node-version: '20'
+
+      - name: 📦 Instalar o Minificador
+        run: npm install -g minify
+
+      - name: 🗜️ Preparar e Minificar os arquivos
+        run: |
+          mkdir dist
+          rsync -av --exclude='.git' --exclude='.github' --exclude='dist' ./ dist/
+          cd dist
+          find . -type f \( -name "*.css" -o -name "*.js" -o -name "*.html" \) -print0 | while IFS= read -r -d '' file; do
+            echo "Minificando $file..."
+            minify "$file" > "${file}.tmp"
+            mv "${file}.tmp" "$file"
+          done
+
+      - name: 🔧 Configurar GitHub Pages
+        uses: actions/configure-pages@v5 # Atualizado para a versão 5!
+
+      - name: 📤 Fazer upload apenas da pasta minificada
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist' # Manda pro ar só a pasta 'dist' minificada
+
+      - name: 🚀 Fazer Deploy do site
+        id: deployment
+        uses: actions/deploy-pages@v5 # Atualizado para a versão 5!
