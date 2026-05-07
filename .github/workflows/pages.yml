@@ -1,0 +1,113 @@
+name: CI/CD Pages
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "20 9 * * 1"
+  workflow_dispatch:
+    inputs:
+      run_live_checks:
+        description: "Run live data contract checks against IBGE"
+        required: false
+        default: "false"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate static site
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check required files
+        run: |
+          test -f index.html
+          test -f index.css
+          test -f script.js
+          test -f ibge-pib.js
+          test -f favicon.png
+          test -f hero.png
+          test -f CNAME
+          test -f package.json
+
+      - name: Check local asset references
+        run: |
+          grep -q 'href="index.css"' index.html
+          grep -q 'src="ibge-pib.js"' index.html
+          grep -q 'src="script.js"' index.html
+          grep -q 'href="favicon.png"' index.html
+
+      - name: Check safer JavaScript pattern
+        run: |
+          ! grep -RInE ' on[a-z]+=' -- *.html
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run automated tests
+        run: npm test
+
+  live-data-contract:
+    name: Live data contract
+    if: github.event_name == 'schedule' || github.event.inputs.run_live_checks == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check IBGE live data
+        run: npm run test:live
+        env:
+          RUN_LIVE_IBGE_TESTS: "1"
+
+  deploy:
+    name: Deploy to GitHub Pages
+    if: github.event_name == 'push'
+    needs: validate
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

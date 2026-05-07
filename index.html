@@ -194,6 +194,81 @@
                     </div>
                 </div>
             </section>
+
+            <!-- FASE 5: DADOS VERIFICADOS -->
+            <section class="phase-section" id="fase-5">
+                <div class="phase-badge">Fase 05: Dados Verificados</div>
+                <h2>Dados por estado: fonte, teste e conferência</h2>
+                <p>Agora a fortaleza também protege a informação. O site busca PIB 2023 e população do Censo 2022 no IBGE/SIDRA, cruza com o IDHM 2021 do PNUD e valida cobertura, metadados e totais oficiais.</p>
+
+                <div class="data-guard" id="pib-verification" data-state="loading">
+                    <div class="data-guard-header">
+                        <div>
+                            <span class="data-kicker">IBGE + PNUD</span>
+                            <h3>PIB, população e IDHM das Unidades da Federação</h3>
+                            <p>PIB: tabela 5938/variável 37. População: tabela 4714/variável 93. IDHM: Painel IDHM 2021.</p>
+                        </div>
+                        <button class="btn-secondary" id="refresh-pib">Verificar agora</button>
+                    </div>
+
+                    <div class="checks-grid" aria-live="polite">
+                        <div class="check-card">
+                            <span>UFs verificadas</span>
+                            <strong id="pib-state-count">--</strong>
+                            <small>PIB, população e IDHM</small>
+                        </div>
+                        <div class="check-card">
+                            <span>PIB UFs x Brasil</span>
+                            <strong id="pib-state-total">--</strong>
+                            <small id="pib-difference">Diferença: --</small>
+                        </div>
+                        <div class="check-card">
+                            <span>População UFs x Brasil</span>
+                            <strong id="population-total">--</strong>
+                            <small id="population-difference">Diferença: --</small>
+                        </div>
+                        <div class="check-card">
+                            <span>IDHM 2021</span>
+                            <strong id="idhm-summary">--</strong>
+                            <small>Muito alto / alto / médio</small>
+                        </div>
+                    </div>
+
+                    <div class="verification-status" id="pib-status">
+                        Consultando fontes oficiais e validando os dados...
+                    </div>
+
+                    <div class="table-wrap">
+                        <table class="pib-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>UF</th>
+                                    <th>Código</th>
+                                    <th>PIB 2023</th>
+                                    <th>População 2022</th>
+                                    <th>PIB per capita</th>
+                                    <th>IDHM 2021</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pib-table-body">
+                                <tr>
+                                    <td colspan="7">Aguardando dados oficiais.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="source-note">
+                        <span id="pib-checked-at">Verificação ainda não concluída.</span>
+                        <div class="source-links">
+                            <a href="https://sidra.ibge.gov.br/tabela/5938" target="_blank" rel="noopener">PIB IBGE</a>
+                            <a href="https://sidra.ibge.gov.br/tabela/4714" target="_blank" rel="noopener">Censo IBGE</a>
+                            <a href="https://www.undp.org/pt/brazil/desenvolvimento-humano/painel-idhm" target="_blank" rel="noopener">IDHM PNUD</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer>
@@ -204,6 +279,7 @@
         </footer>
     </div>
 
+    <script src="ibge-pib.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

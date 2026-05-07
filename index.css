@@ -321,6 +321,186 @@ header h1 {
     margin-bottom: 1rem;
 }
 
+/* Data verification */
+.data-guard {
+    background: #0d0e12;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 2.5rem;
+}
+
+.data-guard[data-state="success"] {
+    border-color: rgba(0, 242, 255, 0.6);
+}
+
+.data-guard[data-state="warning"] {
+    border-color: rgba(255, 204, 0, 0.8);
+}
+
+.data-guard[data-state="error"] {
+    border-color: rgba(255, 77, 77, 0.8);
+}
+
+.data-guard-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.data-kicker {
+    display: inline-block;
+    color: var(--accent-primary);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.7rem;
+}
+
+.data-guard h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.7rem;
+}
+
+.data-guard p {
+    margin-bottom: 0;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--accent-primary);
+    border: 1px solid var(--accent-primary);
+    border-radius: 999px;
+    padding: 0.9rem 1.4rem;
+    font-weight: 800;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.2s ease;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
+    background: rgba(var(--accent-primary-rgb), 0.1);
+}
+
+.btn-secondary:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.checks-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.check-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.2rem;
+    min-width: 0;
+}
+
+.check-card span,
+.check-card small {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.check-card strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    line-height: 1.25;
+    margin: 0.45rem 0;
+    overflow-wrap: anywhere;
+}
+
+.verification-status {
+    background: rgba(var(--accent-primary-rgb), 0.06);
+    border-left: 4px solid var(--accent-primary);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.2rem;
+}
+
+.data-guard[data-state="warning"] .verification-status {
+    background: rgba(255, 204, 0, 0.08);
+    border-left-color: #ffcc00;
+}
+
+.data-guard[data-state="error"] .verification-status {
+    background: rgba(255, 77, 77, 0.08);
+    border-left-color: #ff4d4d;
+}
+
+.table-wrap {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    max-height: 420px;
+    overflow: auto;
+}
+
+.pib-table {
+    border-collapse: collapse;
+    min-width: 920px;
+    width: 100%;
+}
+
+.pib-table th,
+.pib-table td {
+    border-bottom: 1px solid var(--border);
+    padding: 0.9rem 1rem;
+    text-align: left;
+}
+
+.pib-table th {
+    background: #16171d;
+    color: var(--accent-primary);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    position: sticky;
+    text-transform: uppercase;
+    top: 0;
+}
+
+.pib-table td {
+    color: var(--text-muted);
+}
+
+.pib-table td:last-child {
+    color: var(--text-primary);
+    font-weight: 800;
+}
+
+.source-note {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.source-note a {
+    color: var(--accent-primary);
+    text-decoration: none;
+}
+
+.source-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: flex-end;
+}
+
 /* Utils */
 .tip-box {
     padding: 1.5rem;
@@ -386,4 +566,21 @@ footer {
 @media (max-width: 768px) {
     header h1 { font-size: 2.5rem; }
     .phase-section h2 { font-size: 1.8rem; }
+
+    .data-guard {
+        padding: 1.5rem;
+    }
+
+    .data-guard-header,
+    .source-note {
+        flex-direction: column;
+    }
+
+    .checks-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-secondary {
+        width: 100%;
+    }
 }

@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/ibge-pib.test.js",
+    "test:live": "node --test tests/ibge-pib-live.test.js"
+  }
+}
