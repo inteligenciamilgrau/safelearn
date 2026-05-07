@@ -118,6 +118,10 @@ function makePopulationBrazilResponse(value = '203080756', overrides = {}) {
     });
 }
 
+function makeSaoPauloCityPibResponse(value = '1066825105') {
+    return makeResponse('N6', 'Município', [['3550308', 'São Paulo (SP)', value]]);
+}
+
 test('parseMilReais normaliza valores numéricos do SIDRA', () => {
     assert.equal(IbgePib.parseMilReais('10943345439'), 10943345439);
     assert.equal(IbgePib.parseMilReais('1.234,50'), 1234.5);
@@ -153,6 +157,19 @@ test('extractPibSeries rejeita metadados de variável incorreta', () => {
         () => IbgePib.extractPibSeries(makeStateResponse(STATE_RECORDS_2023, { variable: '543' }), 'N3'),
         /Variável inesperada/
     );
+});
+
+test('buildSaoPauloCityPibVerification valida PIB municipal de São Paulo em 2023', () => {
+    const verification = IbgePib.buildSaoPauloCityPibVerification(
+        makeSaoPauloCityPibResponse()
+    );
+
+    assert.equal(verification.passed, true);
+    assert.equal(verification.record.id, '3550308');
+    assert.equal(verification.record.name, 'São Paulo (SP)');
+    assert.equal(verification.record.valueMilReais, 1066825105);
+    assert.equal(IbgePib.SAO_PAULO_CITY_PIB_CONFIG.sourceValueMilReais, 1066825104.98);
+    assert.equal(Math.round(IbgePib.SAO_PAULO_CITY_PIB_CONFIG.sourceValueMilReais), 1066825105);
 });
 
 test('buildPopulationVerification aprova a população do Censo 2022', () => {

@@ -3,6 +3,7 @@
 
     const STATE_LEVEL = 'N3';
     const COUNTRY_LEVEL = 'N1';
+    const MUNICIPALITY_LEVEL = 'N6';
 
     const EXPECTED_UF_CODES = Object.freeze([
         '11', '12', '13', '14', '15', '16', '17',
@@ -38,6 +39,21 @@
         sourceLabel: 'IBGE/SIDRA - Tabela 4714, variável 93',
         sourcePage: 'https://sidra.ibge.gov.br/tabela/4714',
         totalTolerance: 0
+    });
+
+    const SAO_PAULO_CITY_PIB_CONFIG = Object.freeze({
+        key: 'sao-paulo-city-pib',
+        year: '2023',
+        table: '5938',
+        variable: '37',
+        variableName: 'Produto Interno Bruto a preços correntes',
+        unit: 'Mil Reais',
+        municipalityId: '3550308',
+        municipalityName: 'São Paulo (SP)',
+        municipalityUrl: 'https://servicodados.ibge.gov.br/api/v3/agregados/5938/periodos/2023/variaveis/37?localidades=N6%5B3550308%5D',
+        sourcePage: 'https://sidra.ibge.gov.br/tabela/5938',
+        sourceValueMilReais: 1066825104.98,
+        roundedValueMilReais: 1066825105
     });
 
     const IDHM_CONFIG = Object.freeze({
@@ -272,6 +288,39 @@
         return buildSidraVerification(stateResponse, brazilResponse, POPULATION_CONFIG);
     }
 
+    function buildSaoPauloCityPibVerification(response) {
+        const dataset = extractPibSeries(response, MUNICIPALITY_LEVEL);
+
+        invariant(dataset.records.length === 1, 'PIB do município de São Paulo deve ter uma única série.');
+
+        const record = dataset.records[0];
+        const roundedSourceValue = Math.round(SAO_PAULO_CITY_PIB_CONFIG.sourceValueMilReais);
+
+        return {
+            config: SAO_PAULO_CITY_PIB_CONFIG,
+            checkedAt: new Date().toISOString(),
+            record,
+            checks: {
+                metadataPassed: dataset.table === SAO_PAULO_CITY_PIB_CONFIG.table
+                    && dataset.variable === SAO_PAULO_CITY_PIB_CONFIG.variable
+                    && dataset.unit === SAO_PAULO_CITY_PIB_CONFIG.unit
+                    && dataset.year === SAO_PAULO_CITY_PIB_CONFIG.year,
+                municipalityPassed: record.id === SAO_PAULO_CITY_PIB_CONFIG.municipalityId
+                    && record.name === SAO_PAULO_CITY_PIB_CONFIG.municipalityName,
+                sourceRoundingPassed: roundedSourceValue === SAO_PAULO_CITY_PIB_CONFIG.roundedValueMilReais,
+                valuePassed: record.valueMilReais === SAO_PAULO_CITY_PIB_CONFIG.roundedValueMilReais
+            },
+            passed: dataset.table === SAO_PAULO_CITY_PIB_CONFIG.table
+                && dataset.variable === SAO_PAULO_CITY_PIB_CONFIG.variable
+                && dataset.unit === SAO_PAULO_CITY_PIB_CONFIG.unit
+                && dataset.year === SAO_PAULO_CITY_PIB_CONFIG.year
+                && record.id === SAO_PAULO_CITY_PIB_CONFIG.municipalityId
+                && record.name === SAO_PAULO_CITY_PIB_CONFIG.municipalityName
+                && roundedSourceValue === SAO_PAULO_CITY_PIB_CONFIG.roundedValueMilReais
+                && record.valueMilReais === SAO_PAULO_CITY_PIB_CONFIG.roundedValueMilReais
+        };
+    }
+
     function classifyIdhm(value) {
         if (value >= 0.8) {
             return 'Muito alto';
@@ -382,6 +431,14 @@
         return buildPibVerification(stateResponse, brazilResponse);
     }
 
+    async function fetchSaoPauloCityPib2023(fetchImpl) {
+        const runFetch = fetchImpl || (global.fetch && global.fetch.bind(global));
+        invariant(typeof runFetch === 'function', 'Fetch API indisponível para consultar o IBGE.');
+
+        const response = await fetchJson(runFetch, SAO_PAULO_CITY_PIB_CONFIG.municipalityUrl);
+        return buildSaoPauloCityPibVerification(response);
+    }
+
     async function fetchStateIndicators(fetchImpl) {
         const runFetch = fetchImpl || (global.fetch && global.fetch.bind(global));
         invariant(typeof runFetch === 'function', 'Fetch API indisponível para consultar o IBGE.');
@@ -462,6 +519,7 @@
         CONFIG: PIB_CONFIG,
         PIB_CONFIG,
         POPULATION_CONFIG,
+        SAO_PAULO_CITY_PIB_CONFIG,
         IDHM_CONFIG,
         IDHM_BY_UF,
         EXPECTED_UF_CODES,
@@ -478,8 +536,10 @@
         buildSidraVerification,
         buildPibVerification,
         buildPopulationVerification,
+        buildSaoPauloCityPibVerification,
         buildStateIndicatorsVerification,
         fetchPibEstados2023,
+        fetchSaoPauloCityPib2023,
         fetchStateIndicators,
         formatCompactCurrencyFromMilReais,
         formatFullCurrencyFromMilReais,

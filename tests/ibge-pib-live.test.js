@@ -23,3 +23,14 @@ test('contrato vivo com as fontes de indicadores estaduais', { skip: !shouldRunL
     assert.equal(verification.checks.population.difference, 0);
     assert.equal(verification.checks.idhm.passed, true);
 });
+
+test('contrato vivo com o PIB municipal de São Paulo em 2023', { skip: !shouldRunLiveTests }, async () => {
+    assert.equal(typeof fetch, 'function');
+
+    const verification = await IbgePib.fetchSaoPauloCityPib2023(fetch);
+
+    assert.equal(verification.passed, true);
+    assert.equal(verification.record.id, '3550308');
+    assert.equal(verification.record.valueMilReais, 1066825105);
+    assert.equal(verification.checks.sourceRoundingPassed, true);
+});
