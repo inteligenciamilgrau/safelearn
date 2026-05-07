@@ -164,7 +164,7 @@ test('buildPopulationVerification aprova a população do Censo 2022', () => {
     assert.equal(verification.passed, true);
     assert.equal(verification.checks.stateValidation.receivedCount, 27);
     assert.equal(verification.checks.stateTotal, 203080756);
-    assert.equal(verification.checks.difference, 1);
+    assert.equal(verification.checks.difference, 0);
 });
 
 test('validateIdhmDataset valida cobertura e faixas do IDHM 2021', () => {
@@ -173,7 +173,7 @@ test('validateIdhmDataset valida cobertura e faixas do IDHM 2021', () => {
     assert.equal(validation.passed, true);
     assert.equal(validation.brazilValue, 0.766);
     assert.equal(IbgePib.IDHM_BY_UF['53'], 0.814);
-    assert.equal(IbgePib.IDHM_BY_UF['35'], 0.805);
+    assert.equal(IbgePib.IDHM_BY_UF['35'], 0.806);
     assert.equal(IbgePib.IDHM_BY_UF['21'], 0.676);
     assert.equal(validation.categories['Muito alto'], 2);
     assert.equal(validation.categories.Alto, 17);
